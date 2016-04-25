@@ -1,0 +1,32 @@
+x=linspace(0,2*pi,100);
+s1=sin(x);
+s2=2*cos(x);
+subplot(5,1,1);
+stem(s1);
+subplot(5,1,2);
+stem(s2);
+for i=1:100
+    m=mod(i,2);
+ if(m==0)
+     sig(i)=s1(i);
+ end
+ if(m==1)
+sig(i)=s2(i);
+ end
+ end
+subplot(5,1,3)
+stem(sig)
+%demux
+for i=1:100
+    n=mod(i,2);
+    if(n==0)
+        d1(i-1)=sig(i);
+    end
+    if(n==1)
+        d2(i+1)=sig(i);
+    end
+end
+subplot(5,1,4)
+stem(d1);
+subplot(5,1,5)
+stem(d2);
